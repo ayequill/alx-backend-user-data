@@ -47,6 +47,7 @@ def not_found(error) -> Tuple[Any, int]:
 
 @app.errorhandler(401)
 def unauthorized_exception(error) -> Tuple[Any, int]:
+    """ exception handler """
     return jsonify({'error': 'Unauthorized'}), 401
 
 
