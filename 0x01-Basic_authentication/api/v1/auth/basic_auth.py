@@ -9,6 +9,7 @@ from models.user import User
 
 class BasicAuth(Auth):
     """ Basic Auth class """
+
     def extract_base64_authorization_header(self, authorization_header: str) -> str:
         """ Base64 Authorization Header """
         if authorization_header is None or type(authorization_header) is not str:
@@ -28,7 +29,8 @@ class BasicAuth(Auth):
 
     def extract_user_credentials(self, decoded_base64_authorization_header: str) -> (str, str):
         """ Extract User Credentials """
-        if not decoded_base64_authorization_header or not isinstance(decoded_base64_authorization_header, str):
+        if (not decoded_base64_authorization_header or
+                not isinstance(decoded_base64_authorization_header, str)):
             return (None, None)
         if ':' not in decoded_base64_authorization_header:
             return (None, None)
@@ -59,4 +61,3 @@ class BasicAuth(Auth):
         decoded_auth_header = self.decode_base64_authorization_header(base64_auth_header)
         user_email, user_pwd = self.extract_user_credentials(decoded_auth_header)
         return self.user_object_from_credentials(user_email, user_pwd)
-
