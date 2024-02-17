@@ -16,7 +16,7 @@ class Auth:
             path += '/'
         return not any(search(p, path) for p in excluded_paths)
 
-    def authorization_header(self, req: request) -> str:
+    def authorization_header(self, req: request = None) -> str:
         """ Auth Header """
         if req is None:
             return None
