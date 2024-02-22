@@ -51,4 +51,3 @@ class DB:
             raise InvalidRequestError()
         else:
             return user
-
